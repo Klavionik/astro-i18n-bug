@@ -7,6 +7,8 @@ import { getCollection } from 'astro:content';
 import FormattedDate from '../../components/FormattedDate.astro';
 import { extractRouteLangCode, l } from "astro-i18n";
 
+export const getSlugWithoutLang = (slug: string) => slug.substring(3)
+
 const lang = extractRouteLangCode(Astro.request.url)
 const posts = await getCollection('blog', (entry) => {
   const entryLang = entry.slug.split("/")[0]
@@ -46,7 +48,7 @@ const posts = await getCollection('blog', (entry) => {
 						posts.map((post) => (
 							<li>
 								<FormattedDate date={post.data.pubDate} />
-								<a href={l(`/blog/${post.slug}/`)}>{post.data.title}</a>
+								<a href={l(`/blog/${getSlugWithoutLang(post.slug)}/`)}>{post.data.title}</a>
 							</li>
 						))
 					}

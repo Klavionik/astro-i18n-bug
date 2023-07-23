@@ -1,5 +1,5 @@
 ---
-title: 'First post (original)'
+title: 'First post (EN)'
 description: 'Lorem ipsum dolor sit amet'
 pubDate: 'Jul 08 2022'
 heroImage: '/placeholder-hero.jpg'
