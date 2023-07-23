@@ -6,8 +6,8 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
 import { getCollection } from 'astro:content';
 import FormattedDate from '../../components/FormattedDate.astro';
 import { extractRouteLangCode, l } from "astro-i18n";
+import { getSlugWithoutLang } from "../../utils";
 
-const getSlugWithoutLang = (slug: string) => slug.substring(3)
 
 const lang = extractRouteLangCode(Astro.request.url)
 const posts = await getCollection('blog', (entry) => {
