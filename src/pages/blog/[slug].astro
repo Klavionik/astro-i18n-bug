@@ -3,10 +3,12 @@ import { CollectionEntry, getCollection } from 'astro:content';
 import BlogPost from '../../layouts/BlogPost.astro';
 import { createStaticPaths } from "astro-i18n"
 
+export const getSlugWithoutLang = (slug: string) => slug.substring(3)
+
 export const getStaticPaths = createStaticPaths(async ({ langCode }) => {
 	const posts = await getCollection('blog', (entry) => entry.slug.startsWith(langCode));
 	return posts.map((post) => ({
-		params: { slug: post.slug },
+		params: { slug: getSlugWithoutLang(post.slug) },
 		props: post,
 	}))
 }, import.meta.url)
